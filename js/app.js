@@ -44,18 +44,29 @@ function matrixRandom(dimention) {
 }
 
 function showHiddenCard(id) {
+	document.getElementById(id).className = "card show";
+
 	if (numClicksCoupleCards === 0) {
 		card_one = document.getElementById("input_" + id).value;
 		prevTd = id;
 		++numClicksCoupleCards;
-		//document.getElementById(id).className = "show";
 	}
 	else if (numClicksCoupleCards === 1) {
 		card_two = document.getElementById("input_" + id).value;
 		nextTd = id;
 		if ((prevTd !== nextTd) && (card_one === card_two)) {
+			document.getElementById(prevTd).className = "card match";
+			document.getElementById(nextTd).className = "card match";
 			console.log("WELL DONE!!!");
 		}
+		else { // If doesn't match hidde again both cards.
+			document.getElementById(nextTd).className = "card match";
+			setTimeout(function() {
+				document.getElementById(prevTd).className = "card";
+				document.getElementById(nextTd).className = "card";
+			}, 1000);
+		}
+
 		card_one = 0;
 		card_two = 0;
 		numClicksCoupleCards = 0;

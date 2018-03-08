@@ -54,9 +54,9 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    /*background: #2e3d49;
+    background: #2e3d49;
     font-size: 0;
-    color: #ffffff;*/
+    color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
