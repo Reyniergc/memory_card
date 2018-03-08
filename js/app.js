@@ -1,4 +1,4 @@
-let objNumbers = {1: "fa fa-diamond", 2: "fa fa-paper-plane-o", 3: "fa fa-anchor", 4: "fa fa-bolt", 5: "fa fa-bomb", 6: "fa fa-bicycle", 7: "fa fa-cube", 8: "fa fa-leaf"};
+let iconNames = {1: "fa fa-diamond", 2: "fa fa-paper-plane-o", 3: "fa fa-anchor", 4: "fa fa-bolt", 5: "fa fa-bomb", 6: "fa fa-bicycle", 7: "fa fa-cube", 8: "fa fa-leaf"};
 let card_one = 0;
 let card_two = 0;
 let prevTd = 0;
@@ -33,7 +33,7 @@ function randomMatixFreePosition(matrix) {
 function matrixRandom(dimention) {
 	let matrix = buildMatrix(dimention);
 	
-	for (let key in objNumbers) {
+	for (let key in iconNames) {
 		for (let twoTimes = 0; twoTimes < 2; twoTimes++) {
 			let arrayFreePos = randomMatixFreePosition(matrix);
 			matrix[arrayFreePos[0]][arrayFreePos[1]] = parseInt(key);
@@ -43,7 +43,7 @@ function matrixRandom(dimention) {
 	return matrix;
 }
 
-function openCard(id) {
+function showHiddenCard(id) {
 	if (numClicksCoupleCards === 0) {
 		card_one = document.getElementById("input_" + id).value;
 		prevTd = id;
@@ -72,7 +72,7 @@ function createTableGridGame(dimention) {
 		for (let col = 0; col < matrix.length; col++) {			
 			li = document.createElement("li");
 			li.setAttribute("id", id_td);
-			li.setAttribute("onclick", "openCard(" + id_td + ")");
+			li.setAttribute("onclick", "showHiddenCard(" + id_td + ")");
 			li.setAttribute("class", "card");
 
 			let inputHidden = document.createElement("input");
@@ -81,7 +81,7 @@ function createTableGridGame(dimention) {
 			inputHidden.setAttribute("id", "input_" + id_td++);
 			
 			let icon = document.createElement("i");
-			icon.setAttribute("class", objNumbers[matrix[row][col]]);
+			icon.setAttribute("class", iconNames[matrix[row][col]]);
 
 			li.appendChild(icon);
 			li.appendChild(inputHidden);
