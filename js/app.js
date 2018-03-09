@@ -60,7 +60,6 @@ function showHiddenCard(id) {
 			console.log("WELL DONE!!!");
 		}
 		else { // If doesn't match hidde again both cards.
-			document.getElementById(nextTd).className = "card match";
 			setTimeout(function() {
 				document.getElementById(prevTd).className = "card";
 				document.getElementById(nextTd).className = "card";
