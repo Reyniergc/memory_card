@@ -105,7 +105,7 @@ function allCardsMatch() {
 function showHiddenCard(id) {
 	let classValue = document.getElementById(id).getAttribute("class");
 
-	if (classValue !== "card match") {
+	if ((classValue !== "card open show") && (classValue !== "card match")) {
 		document.getElementById(id).className = "card open show";
 
 		if (numClicksCoupleCards === 0) {
