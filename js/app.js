@@ -103,3 +103,18 @@ function createTableGridGame(dimention) {
 	document.getElementById("gridGame").appendChild(ul);
 }
 createTableGridGame(4);
+
+/* A restart button allows the player to reset the
+game board, the timer, and the star rating. */
+function restartGame() {
+	let show = document.getElementsByClassName("show");
+	let match = document.getElementsByClassName("match");
+
+	for (let index = 0; index < show.length; index++) {
+		show[index].className = "card";
+	}
+
+	for (let index = 0; index < match.length; index++) {
+		match[index].className = "card";
+	}
+}
