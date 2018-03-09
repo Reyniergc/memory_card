@@ -97,32 +97,46 @@ function matrixRandom(dimention) {
 	return matrix;
 }
 
+// Return true if all couple cards match otherwise return false.
+function allCardsMatch() {
+	return (document.getElementsByClassName("match").length === 16) ? true : false;
+}
+
 function showHiddenCard(id) {
-	document.getElementById(id).className = "card show";
+	let classValue = document.getElementById(id).getAttribute("class");
 
-	if (numClicksCoupleCards === 0) {
-		card_one = document.getElementById("input_" + id).value;
-		prevTd = id;
-		++numClicksCoupleCards;
-	}
-	else if (numClicksCoupleCards === 1) {
-		card_two = document.getElementById("input_" + id).value;
-		nextTd = id;
-		if ((prevTd !== nextTd) && (card_one === card_two)) {
-			document.getElementById(prevTd).className = "card match";
-			document.getElementById(nextTd).className = "card match";
-			console.log("WELL DONE!!!");
-		}
-		else { // If doesn't match hidde again both cards.
-			setTimeout(function() {
-				document.getElementById(prevTd).className = "card";
-				document.getElementById(nextTd).className = "card";
-			}, 1000);
-		}
+	if (classValue !== "card match") {
+		document.getElementById(id).className = "card open show";
 
-		card_one = 0;
-		card_two = 0;
-		numClicksCoupleCards = 0;
+		if (numClicksCoupleCards === 0) {
+			card_one = document.getElementById("input_" + id).value;
+			prevTd = id;
+			++numClicksCoupleCards;
+		}
+		else if (numClicksCoupleCards === 1) {
+			card_two = document.getElementById("input_" + id).value;
+			nextTd = id;
+			if ((prevTd !== nextTd) && (card_one === card_two)) {
+				document.getElementById(prevTd).className = "card match";
+				document.getElementById(nextTd).className = "card match";
+
+				if (allCardsMatch()) {
+					alert("Winner");
+				}
+			}
+			else { // If doesn't match hidde again both cards.
+				(function(prevTd, nextTd) {
+					setTimeout(function() {
+						document.getElementById(prevTd).className = "card";
+						document.getElementById(nextTd).className = "card";
+					}, 1000);
+				})(prevTd, nextTd);
+			}
+
+			card_one = 0;
+			card_two = 0;
+			numClicksCoupleCards = 0;
+		}
 	}
 }
 
