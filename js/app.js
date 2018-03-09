@@ -4,6 +4,60 @@ let card_two = 0;
 let prevTd = 0;
 let nextTd = 0;
 let numClicksCoupleCards = 0;
+let counter = 0;
+let clear = undefined;
+let hours = [0, 0];
+let minutes = [0, 0];
+let seconds = [0, 0];
+
+// Reset the timer 00:00:00
+function resetTimer() {
+	seconds = [0, 0];
+	minutes = [0, 0];
+	hours   = [0, 0];
+}
+
+// Function to start the timer.
+function startTimer() {
+	clear = setInterval(function() {
+		if (seconds[1] === 10) {
+			seconds[0]++;
+			seconds[1] = 0;
+		}
+
+		// Reset seconds.
+		if ((seconds[0] + "" + seconds[1]) === "59") {
+			seconds[0] = 0;
+			seconds[1] = 0;
+			minutes[1]++;
+		}
+
+		if (minutes[1] === 3) {
+			minutes[0]++;
+			minutes[1] = 0;
+		}
+
+		// Reset minutes.
+		if ((minutes[0] + "" + minutes[1]) === "59") {
+			minutes[0] = 0;
+			minutes[1] = 0;
+			hours[1]++;
+		}
+
+		if (hours[1] === 1) {
+			hours[0]++;
+			hours[1] = 0;
+		}
+
+		if ((hours[0] + "" + hours[1]) === "24") {
+			resetTimer();
+		}
+
+		document.getElementById("timer").innerHTML = hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
+		seconds[1]++;
+
+	}, 1000);
+}
 
 function buildMatrix(length) {
 	let matrix = [];
@@ -100,6 +154,8 @@ function createTableGridGame(dimention) {
 	}
 
 	document.getElementById("gridGame").appendChild(ul);
+	// Start the timer.
+	startTimer();
 }
 createTableGridGame(4);
 
@@ -116,4 +172,6 @@ function restartGame() {
 	for (let index = 0; index < match.length; index++) {
 		match[index].className = "card";
 	}
+
+	resetTimer();
 }
