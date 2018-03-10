@@ -106,7 +106,7 @@ function matrixRandom(dimention) {
 /*CONGRATULATIONS MODAL BOOSTRAP */
 function showModal() {
 	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
-	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>. Number of stars " + star_number + " Star.";
+	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>. Number of stars " + (3 - star_number) + " Star.";
 	$('#myModal').modal('show');
 }
 	
