@@ -116,7 +116,7 @@ function allCardsMatch() {
 }
 
 function showHiddenCard(id) {
-	let classValue = document.getElementById(id).getAttribute("class");
+	const classValue = document.getElementById(id).getAttribute("class");
 
 	if ((classValue !== "card error") && (classValue !== "card open show") && (classValue !== "card match")) {
 		document.getElementById(id).className = "card open show";
@@ -166,8 +166,8 @@ function showHiddenCard(id) {
 }
 
 function createTableGridGame(dimention) {
-	let matrix = matrixRandom(dimention);
-	let ul = document.createElement("ul");
+	const matrix = matrixRandom(dimention);
+	const ul = document.createElement("ul");
 	ul.setAttribute("class", "deck");
 	let id_td = 1;
 
