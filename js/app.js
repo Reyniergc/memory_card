@@ -38,7 +38,7 @@ function startTimer() {
 			minutes[1]++;
 		}
 
-		if (minutes[1] === 3) {
+		if (minutes[1] === 10) {
 			minutes[0]++;
 			minutes[1] = 0;
 		}
@@ -50,7 +50,7 @@ function startTimer() {
 			hours[1]++;
 		}
 
-		if (hours[1] === 1) {
+		if (hours[1] === 10) {
 			hours[0]++;
 			hours[1] = 0;
 		}
