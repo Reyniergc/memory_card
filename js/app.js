@@ -140,9 +140,13 @@ function showHiddenCard(id) {
 			}
 			else { // If doesn't match hidde again both cards.
 				(function(prevTd, nextTd) {
+					document.getElementById(prevTd).className = "card error";
+					document.getElementById(nextTd).className = "card error";
+
 					setTimeout(function() {
 						document.getElementById(prevTd).className = "card";
 						document.getElementById(nextTd).className = "card";
+
 					}, 1000);
 				})(prevTd, nextTd);
 			}
