@@ -215,4 +215,12 @@ function restartGame() {
 	numClicksCoupleCards = 0;
 	countCoupleCardsOpen = 0;
 	star_number = 0; 
+
+	/* Close the modal if is open.
+	 * Start the timer one more time.
+	*/
+	if ($('#myModal').is(':visible')) {
+		$('#myModal').modal('hide');
+		startTimer();
+	}
 }
