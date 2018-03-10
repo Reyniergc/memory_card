@@ -196,24 +196,16 @@ createTableGridGame(4);
 
 /* A restart button allows the player to reset the
 game board, the timer, and the star rating. */
-function restartGame() {
-	let show = document.getElementsByClassName("card open show");
-	let match = document.getElementsByClassName("match");
-	
+function restartGame() {	
 	document.getElementById("star_1").style.visibility = "visible";
 	document.getElementById("star_2").style.visibility = "visible";
 	document.getElementById("star_3").style.visibility = "visible";
-
-	for (let index = 0; index < show.length; index++) {
-		//show[index].classList.remove("open");
-		//show[index].classList.remove("show");
-		show[index].classList.remove("open", "show");
-	}
-
-	for (let index = 0; index < match.length; index++) {
-		//match[index].className = "card";
-		match[index].classList.remove("match");
-	}
+	
+	$("#gridGame").find("li").each(function() {
+		$(this).removeClass("show");
+		$(this).removeClass("open");
+		$(this).removeClass("match");
+	});
 
 	resetTimer();
 	numClicksCoupleCards = 0;
