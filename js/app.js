@@ -1,10 +1,12 @@
-let iconNames = {1: "fa fa-diamond", 2: "fa fa-paper-plane-o", 3: "fa fa-anchor", 4: "fa fa-bolt", 5: "fa fa-bomb", 6: "fa fa-bicycle", 7: "fa fa-cube", 8: "fa fa-leaf"};
+const iconNames = {1: "fa fa-diamond", 2: "fa fa-paper-plane-o", 3: "fa fa-anchor", 4: "fa fa-bolt", 5: "fa fa-bomb", 6: "fa fa-bicycle", 7: "fa fa-cube", 8: "fa fa-leaf"};
 let card_one = 0;
 let card_two = 0;
 let prevTd = 0;
 let nextTd = 0;
+let star_number = 0;
 let numClicksCoupleCards = 0;
 let counter = 0;
+let countCoupleCardsOpen = 0;
 let clear = undefined;
 let hours = [0, 0];
 let minutes = [0, 0];
@@ -57,7 +59,6 @@ function startTimer() {
 			resetTimer();
 		}
 
-		//document.getElementById("timer").innerHTML = hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
 		document.getElementById("timer").innerHTML = showTime();
 		seconds[1]++;
 
@@ -102,9 +103,10 @@ function matrixRandom(dimention) {
 	return matrix;
 }
 
+/*CONGRATULATIONS MODAL BOOSTRAP */
 function showModal() {
-	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations you have win the game!!!</span>";
-	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>";
+	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
+	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>. Number of stars " + star_number + " Star.";
 	$('#myModal').modal('show');
 }
 	
@@ -148,6 +150,13 @@ function showHiddenCard(id) {
 			card_one = 0;
 			card_two = 0;
 			numClicksCoupleCards = 0;
+			countCoupleCardsOpen += 2; // Count couple cards open.
+			
+			// Decrease number stars.
+			if ((star_number < 3) && (countCoupleCardsOpen === 10)) {
+				document.getElementById("star_" + (++star_number)).style.visibility = "hidden";
+				countCoupleCardsOpen = 0;
+			}
 		}
 	}
 }
@@ -190,6 +199,10 @@ game board, the timer, and the star rating. */
 function restartGame() {
 	let show = document.getElementsByClassName("card open show");
 	let match = document.getElementsByClassName("match");
+	
+	document.getElementById("star_1").style.visibility = "visible";
+	document.getElementById("star_2").style.visibility = "visible";
+	document.getElementById("star_3").style.visibility = "visible";
 
 	for (let index = 0; index < show.length; index++) {
 		//show[index].classList.remove("open");
@@ -204,4 +217,6 @@ function restartGame() {
 
 	resetTimer();
 	numClicksCoupleCards = 0;
+	countCoupleCardsOpen = 0;
+	star_number = 0; 
 }
