@@ -21,6 +21,11 @@ body {
     font-family: 'Coda', cursive;
 }
 
+span {
+	text-shadow: 1px 3px 5px #FF0000;
+	text-transform: uppercase;
+}
+
 .container {
     display: flex;
     justify-content: center;

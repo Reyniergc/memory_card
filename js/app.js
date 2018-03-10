@@ -17,6 +17,10 @@ function resetTimer() {
 	hours   = [0, 0];
 }
 
+function showTime() {
+	return hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
+}
+
 // Function to start the timer.
 function startTimer() {
 	clear = setInterval(function() {
@@ -53,7 +57,8 @@ function startTimer() {
 			resetTimer();
 		}
 
-		document.getElementById("timer").innerHTML = hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
+		//document.getElementById("timer").innerHTML = hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
+		document.getElementById("timer").innerHTML = showTime();
 		seconds[1]++;
 
 	}, 1000);
@@ -97,6 +102,12 @@ function matrixRandom(dimention) {
 	return matrix;
 }
 
+function showModal() {
+	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations you have win the game!!!</span>";
+	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>";
+	$('#myModal').modal('show');
+}
+	
 // Return true if all couple cards match otherwise return false.
 function allCardsMatch() {
 	return (document.getElementsByClassName("match").length === 16) ? true : false;
@@ -121,7 +132,8 @@ function showHiddenCard(id) {
 				document.getElementById(nextTd).className = "card match";
 
 				if (allCardsMatch()) {
-					alert("Winner");
+					showModal();
+					clearInterval(clear); // Stop the timer.
 				}
 			}
 			else { // If doesn't match hidde again both cards.
@@ -176,16 +188,20 @@ createTableGridGame(4);
 /* A restart button allows the player to reset the
 game board, the timer, and the star rating. */
 function restartGame() {
-	let show = document.getElementsByClassName("show");
+	let show = document.getElementsByClassName("card open show");
 	let match = document.getElementsByClassName("match");
 
 	for (let index = 0; index < show.length; index++) {
-		show[index].className = "card";
+		//show[index].classList.remove("open");
+		//show[index].classList.remove("show");
+		show[index].classList.remove("open", "show");
 	}
 
 	for (let index = 0; index < match.length; index++) {
-		match[index].className = "card";
+		//match[index].className = "card";
+		match[index].classList.remove("match");
 	}
 
 	resetTimer();
+	numClicksCoupleCards = 0;
 }
