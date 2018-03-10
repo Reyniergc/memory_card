@@ -7,6 +7,7 @@ let star_number = 0;
 let numClicksCoupleCards = 0;
 let counter = 0;
 let countCoupleCardsOpen = 0;
+let numOfMoves = 0;
 let clear = undefined;
 let hours = [0, 0];
 let minutes = [0, 0];
@@ -155,6 +156,8 @@ function showHiddenCard(id) {
 			card_two = 0;
 			numClicksCoupleCards = 0;
 			countCoupleCardsOpen += 2; // Count couple cards open.
+			numOfMoves += 2;
+			document.getElementsByClassName("moves")[0].innerHTML = numOfMoves;
 			
 			// Decrease number stars.
 			if ((star_number < 3) && (countCoupleCardsOpen === 10)) {
@@ -214,7 +217,9 @@ function restartGame() {
 	resetTimer();
 	numClicksCoupleCards = 0;
 	countCoupleCardsOpen = 0;
-	star_number = 0; 
+	star_number = 0;
+	numOfMoves = 0;
+	document.getElementsByClassName("moves")[0].innerHTML = 0;
 
 	/* Close the modal if is open.
 	 * Start the timer one more time.
