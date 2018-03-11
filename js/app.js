@@ -104,10 +104,14 @@ function matrixRandom(dimention) {
 	return matrix;
 }
 
-/*CONGRATULATIONS MODAL BOOSTRAP */
+/* CONGRATULATIONS BOOTSTRAP MODAL */
 function showModal() {
 	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
 	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>. Number of stars " + (3 - star_number) + " Star.";
+
+	document.getElementById("startGame").setAttribute("onclick", "JavaScript:restartGame(true)");
+	document.getElementById("startGame").disabled = false;
+
 	$('#myModal').modal('show');
 }
 	
@@ -196,14 +200,16 @@ function createTableGridGame(dimention) {
 	}
 
 	document.getElementById("gridGame").appendChild(ul);
+	document.getElementById("startGame").disabled = true;
+
 	// Start the timer.
 	startTimer();
 }
-createTableGridGame(4);
 
 /* A restart button allows the player to reset the
 game board, the timer, and the star rating. */
-function restartGame() {	
+function restartGame(timer) {
+	document.getElementById("startGame").disabled = true;
 	document.getElementById("star_1").style.visibility = "visible";
 	document.getElementById("star_2").style.visibility = "visible";
 	document.getElementById("star_3").style.visibility = "visible";
@@ -226,6 +232,11 @@ function restartGame() {
 	*/
 	if ($('#myModal').is(':visible')) {
 		$('#myModal').modal('hide');
+		startTimer();
+	}
+	
+	// If we want to play again.
+	if (timer) {
 		startTimer();
 	}
 }

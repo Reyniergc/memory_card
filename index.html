@@ -24,13 +24,14 @@
 
 			<span class="moves">0</span> Moves
 
-            <div class="restart" title="Restart Game" onclick="JavaScript:restartGame();">
+            <div class="restart" title="Restart Game" onclick="JavaScript:restartGame(false);">
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
 
         <div id="gridGame">
 			<span id="timer">00:00:00</span>
+			<button type="button" class="btn btn-primary" onclick="JavaScript:createTableGridGame(4);" id="startGame">Start Game</button>
 		</div>
 
 		<!-- Modal -->
@@ -47,7 +48,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" onclick="JavaScript:restartGame();">Play Again!</button>
+						<button type="button" class="btn btn-primary" onclick="JavaScript:restartGame(false);">Play Again!</button>
 					</div>
 				</div>
 			</div>

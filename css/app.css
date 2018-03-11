@@ -22,6 +22,10 @@ body {
     font-family: 'Coda', cursive;
 }
 
+#startGame {
+	margin-left: 200px;
+}
+
 span {
 	text-shadow: 1px 3px 5px #FF0000;
 	text-transform: uppercase;
