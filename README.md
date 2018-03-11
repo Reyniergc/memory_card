@@ -3,11 +3,11 @@ Project realized during the Udacity Front-End Nano Degree
 
 **Dependencies external Frameworks:**
 
-_JavaScript Files:_
+_**JavaScript** Files:_
 - Jquery.min.js
 - bootstrap.min.js
 
-_Css Files:_
+_**Css** Files:_
 - font-awesome.min.css
 - bootstrap.min.css
 
