@@ -1,7 +1,7 @@
 # memory_card
 Project realized during the Udacity Front-End Nano Degree
 
-Dependencies external Frameworks:
+**Dependencies external Frameworks:**
 
 JavaScript Files
 - Jquery.min.js
