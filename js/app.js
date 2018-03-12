@@ -3,66 +3,36 @@ let card_one = 0;
 let card_two = 0;
 let prevTd = 0;
 let nextTd = 0;
-let star_number = 0;
+let star_number = 3;
 let numClicksCoupleCards = 0;
 let counter = 0;
 let coupleCardsNoMatch = 0;
 let numOfMoves = 0;
 let clear = undefined;
-let hours = [0, 0];
-let minutes = [0, 0];
-let seconds = [0, 0];
-
-// Reset the timer 00:00:00
-function resetTimer() {
-	seconds = [0, 0];
-	minutes = [0, 0];
-	hours   = [0, 0];
-}
+let countSeconds = 0
 
 function showTime() {
-	return hours[0] + "" + hours[1] + ":" + minutes[0] + "" + minutes[1] + ":" + seconds[0] + "" + seconds[1];
+	let timeFormat = "";
+
+	if (countSeconds < 60) {
+		timeFormat = (countSeconds < 10) ? "00:0" + countSeconds : "00:" + countSeconds;
+	}
+	else { // countSeconds > 60
+		let minutes = Math.trunc(countSeconds / 60);
+		let seconds = countSeconds % 60;
+
+		timeFormat = (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
+		timeFormat += (seconds < 10) ? "0" + seconds : seconds;
+	}
+
+	return timeFormat;
 }
 
 // Function to start the timer.
 function startTimer() {
 	clear = setInterval(function() {
-		if (seconds[1] === 10) {
-			seconds[0]++;
-			seconds[1] = 0;
-		}
-
-		// Reset seconds.
-		if ((seconds[0] + "" + seconds[1]) === "59") {
-			seconds[0] = 0;
-			seconds[1] = 0;
-			minutes[1]++;
-		}
-
-		if (minutes[1] === 10) {
-			minutes[0]++;
-			minutes[1] = 0;
-		}
-
-		// Reset minutes.
-		if ((minutes[0] + "" + minutes[1]) === "59") {
-			minutes[0] = 0;
-			minutes[1] = 0;
-			hours[1]++;
-		}
-
-		if (hours[1] === 10) {
-			hours[0]++;
-			hours[1] = 0;
-		}
-
-		if ((hours[0] + "" + hours[1]) === "24") {
-			resetTimer();
-		}
-
 		document.getElementById("timer").innerHTML = showTime();
-		seconds[1]++;
-
+		countSeconds++;
 	}, 1000);
 }
 
@@ -80,7 +50,7 @@ function buildMatrix(length) {
 	return matrix;
 }
 
-function randomMatixFreePosition(matrix) {
+function randomMatrixFreePosition(matrix) {
 	while (true) {
 		let row = Math.floor((Math.random() * 4) + 0);
 		let col = Math.floor((Math.random() * 4) + 0);
@@ -96,7 +66,7 @@ function matrixRandom(dimention) {
 	
 	for (let key in iconNames) {
 		for (let twoTimes = 0; twoTimes < 2; twoTimes++) {
-			let arrayFreePos = randomMatixFreePosition(matrix);
+			let arrayFreePos = randomMatrixFreePosition(matrix);
 			matrix[arrayFreePos[0]][arrayFreePos[1]] = parseInt(key);
 		}
 	}
@@ -106,8 +76,11 @@ function matrixRandom(dimention) {
 
 /* CONGRATULATIONS BOOTSTRAP MODAL */
 function showModal() {
+	let fixTime = showTime();
+	fixTime = fixTime.substring(0, fixTime.length - 1) + (parseInt(fixTime[fixTime.length - 1]) - 1);
+
 	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
-	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + showTime() + "</b>. Number of stars " + (3 - star_number) + " Star.";
+	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + fixTime + "</b>. Number of stars " + star_number + " Star.";
 
 	document.getElementById("startGame").setAttribute("onclick", "JavaScript:restartGame(true)");
 	document.getElementById("startGame").disabled = false;
@@ -156,7 +129,7 @@ function showHiddenCard(id) {
 				})(prevTd, nextTd);
 
 				coupleCardsNoMatch += 2; // Count couple cards open not match.
-				// Decrease number stars.
+				// Decrease the number of stars available.
 				if ((star_number > 0) && (coupleCardsNoMatch === 10)) {
 					document.getElementById("star_" + (star_number--)).style.visibility = "hidden";
 					coupleCardsNoMatch = 0;
@@ -220,10 +193,10 @@ function restartGame(timer) {
 		$(this).removeClass("match");
 	});
 
-	resetTimer();
+	countSeconds = 0;
 	numClicksCoupleCards = 0;
 	coupleCardsNoMatch = 0;
-	star_number = 0;
+	star_number = 3;
 	numOfMoves = 0;
 	document.getElementsByClassName("moves")[0].innerHTML = 0;
 
