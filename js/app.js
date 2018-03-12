@@ -6,7 +6,7 @@ let nextTd = 0;
 let star_number = 0;
 let numClicksCoupleCards = 0;
 let counter = 0;
-let countCoupleCardsOpen = 0;
+let coupleCardsNoMatch = 0;
 let numOfMoves = 0;
 let clear = undefined;
 let hours = [0, 0];
@@ -154,20 +154,20 @@ function showHiddenCard(id) {
 
 					}, 1000);
 				})(prevTd, nextTd);
+
+				coupleCardsNoMatch += 2; // Count couple cards open not match.
+				// Decrease number stars.
+				if ((star_number > 0) && (coupleCardsNoMatch === 10)) {
+					document.getElementById("star_" + (star_number--)).style.visibility = "hidden";
+					coupleCardsNoMatch = 0;
+				}
 			}
 
 			card_one = 0;
 			card_two = 0;
 			numClicksCoupleCards = 0;
-			countCoupleCardsOpen += 2; // Count couple cards open.
 			numOfMoves += 2;
 			document.getElementsByClassName("moves")[0].innerHTML = numOfMoves;
-			
-			// Decrease number stars.
-			if ((star_number < 3) && (countCoupleCardsOpen === 10)) {
-				document.getElementById("star_" + (++star_number)).style.visibility = "hidden";
-				countCoupleCardsOpen = 0;
-			}
 		}
 	}
 }
@@ -222,7 +222,7 @@ function restartGame(timer) {
 
 	resetTimer();
 	numClicksCoupleCards = 0;
-	countCoupleCardsOpen = 0;
+	coupleCardsNoMatch = 0;
 	star_number = 0;
 	numOfMoves = 0;
 	document.getElementsByClassName("moves")[0].innerHTML = 0;
