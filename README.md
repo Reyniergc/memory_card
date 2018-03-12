@@ -1,9 +1,9 @@
 # memory_card
 Project realized during the Udacity Front-End Nano Degree
 
-Main gool of the project memory card.
+Main goal of the project memory card.
 
-The main gool of this project is create a frendly game where the players should discover all couple of cards with the same image in this case the game finish and the player wins. 
+The main gool of this project is create a friendly game where the players should discover all couple of cards with the same image in this case the game finish and the player wins. 
 
 **Dependencies external Frameworks:**
 
