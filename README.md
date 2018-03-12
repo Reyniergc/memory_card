@@ -3,7 +3,7 @@ Project realized during the Udacity Front-End Nano Degree
 
 Main goal of the project memory card.
 
-The main gool of this project is create a friendly game where the players should discover all couple of cards with the same image in this case the game finish and the player wins. 
+The main goal of this project is create a friendly game where the players should discover all couple of cards with the same image in this case the game finish and the player wins. 
 
 **Dependencies external Frameworks:**
 
