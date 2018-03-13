@@ -8,8 +8,8 @@ let numClicksCoupleCards = 0;
 let counter = 0;
 let coupleCardsNoMatch = 0;
 let numOfMoves = 0;
-let clear = undefined;
-let countSeconds = 0
+let clear = 0;
+let countSeconds = 0;
 
 function showTime() {
 	let timeFormat = "";
@@ -103,7 +103,12 @@ function showModal() {
 	}
 	else { // When the player win the game.
 		if (document.getElementById("checkboxSecCountDown").checked) {
-			fixTime = fixTime.substring(0, fixTime.length - 2) + (parseInt(fixTime.split(":")[1]) + 1);
+			if (parseInt(fixTime.split(":")[1]) >= 9) {
+				fixTime = fixTime.substring(0, fixTime.length - 2) + (parseInt(fixTime.split(":")[1]) + 1);
+			}
+			else {
+				fixTime = fixTime.substring(0, fixTime.length - 2) +  "0" + (parseInt(fixTime.split(":")[1]) + 1);
+			}
 		}
 		else {
 			fixTime = fixTime.substring(0, fixTime.length - 2) + (parseInt(fixTime.split(":")[1]) - 1);
@@ -114,7 +119,7 @@ function showModal() {
 		document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + fixTime + "</b>. Number of stars: " + star_number + " Star.";
 	}
 
-	document.getElementById("startGame").setAttribute("onclick", "JavaScript:restartGame(true)");
+	document.getElementById("startGame").setAttribute("onclick", "JavaScript:restartGame()");
 	document.getElementById("startGame").disabled = false;
 
 	$('#myModal').modal('show');
@@ -177,9 +182,10 @@ function showHiddenCard(id) {
 	}
 }
 
-function createTableGridGame(dimention) {
+function createTableGridGame(dimention = 4) {
 	const matrix = matrixRandom(dimention);
 	const ul = document.createElement("ul");
+	ul.setAttribute("id", "ul_grid");
 	ul.setAttribute("class", "deck");
 	let id_td = 1;
 
@@ -214,16 +220,15 @@ function createTableGridGame(dimention) {
 /* A restart button allows the player to reset the
 game board, the timer, and the star rating. */
 function restartGame(timer) {
+	clearInterval(clear); // Stop the timer.
+	
+	const child = document.getElementById("ul_grid");
+	document.getElementById("gridGame").removeChild(child);
 	document.getElementById("startGame").disabled = true;
+
 	document.getElementById("star_1").style.visibility = "visible";
 	document.getElementById("star_2").style.visibility = "visible";
 	document.getElementById("star_3").style.visibility = "visible";
-	
-	$("#gridGame").find("li").each(function() {
-		$(this).removeClass("show");
-		$(this).removeClass("open");
-		$(this).removeClass("match");
-	});
 
 	countSeconds = (document.getElementById("checkboxSecCountDown").checked) ? 30 : 0;
 	numClicksCoupleCards = 0;
@@ -233,16 +238,10 @@ function restartGame(timer) {
 	document.getElementsByClassName("moves")[0].innerHTML = 0;
 	document.getElementById("timer").classList.remove("blink");
 
-	/* Close the modal if is open.
-	 * Start the timer one more time.
-	*/
+	/* Close the modal if is open. */
 	if ($('#myModal').is(':visible')) {
 		$('#myModal').modal('hide');
-		startTimer();
 	}
 	
-	// If we want to play again.
-	if (timer) {
-		startTimer();
-	}
+	createTableGridGame();
 }
