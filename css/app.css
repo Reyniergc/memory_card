@@ -17,14 +17,15 @@ body {
 }
 
 body {
-    /*background: #ffffff url('../img/geometry2.png');*/ /* Background pattern from Subtle Patterns */
-	 background: url("../img/card.jpg");
+    background: #ffffff url('../img/geometry2.png'); // Background pattern from Subtle Patterns
+	/* background: url("../img/card.jpg"); */
     font-family: 'Coda', cursive;
 }
 
+/*
 #startGame {
 	margin-left: 200px;
-}
+}*/
 
 span {
 	text-shadow: 1px 3px 5px #FF0000;
@@ -46,6 +47,26 @@ h1 {
 /*
  * Styles for the deck of cards
  */
+
+#infoAndCountDown {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	width: 660px;
+}
+
+.blink {
+	animation: blink 1s infinite;
+	color: rgb (0, 137, 226);
+	font-size: 24px;
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	75% { opacity: 1; }
+	76% { opacity: 0; }
+	100% { opacity: 0; }
+}
 
 .deck {
     width: 660px;

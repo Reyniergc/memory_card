@@ -30,10 +30,28 @@ function showTime() {
 
 // Function to start the timer.
 function startTimer() {
-	clear = setInterval(function() {
-		document.getElementById("timer").innerHTML = showTime();
-		countSeconds++;
-	}, 1000);
+	if (document.getElementById("checkboxSecCountDown").checked) {
+		countSeconds = 30;
+		clear = setInterval(function() {
+			if (countSeconds === 15) {
+				document.getElementById("timer").classList.add("blink");
+			}
+
+			if (countSeconds === 0) {
+				clearInterval(clear); // Stop the timer.
+				document.getElementById("timer").classList.remove("blink");
+				showModal();
+			}
+			document.getElementById("timer").innerHTML = showTime();
+			countSeconds--;
+		}, 1000);
+	}
+	else {
+		clear = setInterval(function() {
+			document.getElementById("timer").innerHTML = showTime();
+			countSeconds++;
+		}, 1000);
+	}
 }
 
 function buildMatrix(length) {
@@ -77,10 +95,24 @@ function matrixRandom(dimention) {
 /* CONGRATULATIONS BOOTSTRAP MODAL */
 function showModal() {
 	let fixTime = showTime();
-	fixTime = fixTime.substring(0, fixTime.length - 1) + (parseInt(fixTime[fixTime.length - 1]) - 1);
 
-	document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
-	document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + fixTime + "</b>. Number of stars " + star_number + " Star.";
+	// When the user lose the game
+	if ((document.getElementById("checkboxSecCountDown").checked) && (!allCardsMatch())) {
+		document.getElementById("congratulationsHeader").innerHTML = "<span>GAME OVER!!!</span>";
+		document.getElementById("modalBody").innerHTML = "Time left : <b>00:00 sec</b>. Number of stars: " + star_number + " Star.";
+	}
+	else { // When the player win the game.
+		if (document.getElementById("checkboxSecCountDown").checked) {
+			fixTime = fixTime.substring(0, fixTime.length - 2) + (parseInt(fixTime.split(":")[1]) + 1);
+		}
+		else {
+			fixTime = fixTime.substring(0, fixTime.length - 2) + (parseInt(fixTime.split(":")[1]) - 1);
+		}
+
+		document.getElementById("congratulationsHeader").innerHTML = "<span>Congratulations!!! You Won the game!!!</span>";
+		
+		document.getElementById("modalBody").innerHTML = "Time spent to win the game: <b>" + fixTime + "</b>. Number of stars: " + star_number + " Star.";
+	}
 
 	document.getElementById("startGame").setAttribute("onclick", "JavaScript:restartGame(true)");
 	document.getElementById("startGame").disabled = false;
@@ -193,12 +225,13 @@ function restartGame(timer) {
 		$(this).removeClass("match");
 	});
 
-	countSeconds = 0;
+	countSeconds = (document.getElementById("checkboxSecCountDown").checked) ? 30 : 0;
 	numClicksCoupleCards = 0;
 	coupleCardsNoMatch = 0;
 	star_number = 3;
 	numOfMoves = 0;
 	document.getElementsByClassName("moves")[0].innerHTML = 0;
+	document.getElementById("timer").classList.remove("blink");
 
 	/* Close the modal if is open.
 	 * Start the timer one more time.
