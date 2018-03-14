@@ -27,7 +27,7 @@ On the other hand, the CSS **font-awesome.min.css** is used to fill the grid wit
 This function converts a number of seconds in human readable time using the following format minutes:seconds (00:00).
 - _**showTime(){}**_
 
-Function to starts the timer also start the countdown.
+Function to start the timer also starts the countdown.
 - _**startTimer() {}**_
 
 Build a matrix with a given dimention (N*N)
