@@ -36,7 +36,7 @@ Build a matrix with a given dimention (N*N)
 This function searches and returns a free position of the matrix and fills this position with a number.
 - _**randomMatrixFreePosition(matrix) {}**_
 
-Build a matrix with random numbers. This matrix is use to fill the Grid with Icons.
+Builds a matrix with random numbers. This matrix is used to fill the Grid with Icons.
 The Icons are stored in a JavaScript variable named **iconNames**
 - _**matrixRandom(dimention) {}**_
 
