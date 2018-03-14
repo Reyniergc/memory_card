@@ -33,7 +33,7 @@ Function to start the timer also starts the countdown.
 Build a matrix with a given dimention (N*N)
 - _**buildMatrix(length) {}**_
 
-This function search and return a free position of the matrix and fill this position with a number.
+This function searches and returns a free position of the matrix and fills this position with a number.
 - _**randomMatrixFreePosition(matrix) {}**_
 
 Build a matrix with random numbers. This matrix is use to fill the Grid with Icons.
