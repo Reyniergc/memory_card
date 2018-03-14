@@ -3,7 +3,7 @@ Project realized during the Udacity Front-End Nano Degree
 
 **Main goal of the project memory card.**
 
-The main goal of this project is to create a friendly game where the players have to discover two matching cards with the same image. Once all the cards are matched the game ends. Also we can increment the difficult level with a countdown of 30 seconds. When the countdown is in **15 seconds** the timer start to blink to alert the user that the game is finishing.
+The main goal of this project is to create a friendly game where the players have to discover two matching cards with the same image. Once all the cards are matched the game ends. Also we can increment the difficult level with a countdown of 30 seconds. When the countdown reaches **15 seconds** the timer starts to blink to alert the user that the game is about the finish.
 
 
 **External Frameworks Dependencies:**
