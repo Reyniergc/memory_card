@@ -22,7 +22,7 @@ A bootstrap modal is used to congratulation the player when all cards match or i
 On the other hand the CSS **font-awesome.min.css** is used to fill the grid with eigth couple of images.
 
 
-**JAVASCRIPT FUNCTION EXPLANATION**
+**_JAVASCRIPT FUNCTION EXPLANATION_**
 
 This function converts a number of seconds in human readable time using the following format minutes:seconds (00:00).
 _**showTime(){}**_
