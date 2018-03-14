@@ -8,11 +8,11 @@ The main goal of this project is to create a friendly game where the players hav
 
 **External Frameworks Dependencies:**
 
-**JavaScript** Files:_
+**JavaScript** Files:
 - js/bootstrap.min.js
 - js/jquery.min.js
 
-**Css** Files:_
+**Css** Files:
 - css/font-awesome.min.css
 - css/bootstrap.min.css
 
