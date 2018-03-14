@@ -43,14 +43,14 @@ The Icons are stored in a JavaScript variable named **iconNames**
 The following function was explained after **external frameworks dependencies** in the current readme file.
 - _**showModal() {}**_
 
-This function return true if the player win the game, that is, if all cards are matched otherwise return false.
+This function returns true if the player wins the game, that is, if all cards are matched, otherwise return false.
 - _**allCardsMatch() {}**_
 
-This function do several things, for instance: Show the image on the card, change the css class to green when two cards are matched or when the cards doesn't matched in this case the color is red, count the numbers of moves, etc.
+This function does several things, for instance: Shows the image on the card, changes the css class to green when two cards are matched (or when the cards don’t match, in this case the color is red), counts  the numbers of moves, etc.
 - _**showHiddenCard(id)**_
 
-Create dynamically a random grid and fill it with eigth couple images.
+Creates dynamically a random grid and fills it with eigth couple images.
 - _**createTableGridGame(dimention = 4) {}**_
 
-The last function reset the game board, the timer, the star rating and the number of moves.
+The last function resets the game board, the timer, the star rating and the number of moves.
 - _**restartGame(timer) {}**_
