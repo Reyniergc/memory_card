@@ -19,7 +19,7 @@ The main goal of this project is to create a friendly game where the players hav
 A bootstrap modal is used to congratulation the player when all cards match or if the player lose the game. In this modal you can find information about the timer and the number of stars used during the game. Also a botton to close the modal and other one to restart the game. 
 
 
-On the other hand the CSS **font-awesome.min.css** is used to fill the grid with eigth couple of images.
+On the other hand, the CSS **font-awesome.min.css** is used to fill the grid with eigth couple of images.
 
 
 **_JAVASCRIPT FUNCTION EXPLANATION_**
