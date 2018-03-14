@@ -52,4 +52,4 @@ Create dynamically a random grid and fill it with eigth couple images.
 _**createTableGridGame(dimention = 4) {}**_
 
 The last function reset the game board, the timer, the star rating and the number of moves.
-_**restartGame(timer) {}**_
+_**restartGame(timer) {}**_l
