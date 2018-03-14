@@ -28,29 +28,29 @@ This function converts a number of seconds in human readable time using the foll
 - _**showTime(){}**_
 
 Function to start the timer also start the countdown.
-_**startTimer() {}**_
+- _**startTimer() {}**_
 
 Build a matrix with a given dimention (N*N)
-_**buildMatrix(length) {}**_
+- _**buildMatrix(length) {}**_
 
 This function search and return a free position of the matrix and fill this position with a number.
-_**randomMatrixFreePosition(matrix) {}**_
+- _**randomMatrixFreePosition(matrix) {}**_
 
 Build a matrix with random numbers. This matrix is use to fill the Grid with Icons.
 The Icons are stored in a JavaScript variable named **iconNames**
-_**matrixRandom(dimention) {}**_
+- _**matrixRandom(dimention) {}**_
 
 The following function was explained after **external frameworks dependencies** in the current readme file.
-_**showModal() {}**_
+- _**showModal() {}**_
 
 This function return true if the player win the game, that is, if all cards are matched otherwise return false.
-_**allCardsMatch() {}**_
+- _**allCardsMatch() {}**_
 
 This function do several things, for instance: Show the image on the card, change the css class to green when two cards are matched or when the cards doesn't matched in this case the color is red, count the numbers of moves, etc.
-_**showHiddenCard(id)**_
+- _**showHiddenCard(id)**_
 
 Create dynamically a random grid and fill it with eigth couple images.
-_**createTableGridGame(dimention = 4) {}**_
+- _**createTableGridGame(dimention = 4) {}**_
 
 The last function reset the game board, the timer, the star rating and the number of moves.
-_**restartGame(timer) {}**_
+- _**restartGame(timer) {}**_
