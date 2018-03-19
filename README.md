@@ -2,7 +2,7 @@
 Project realized during the **Udacity** Front-End Nano Degree.
 
 **In this link you can play the game if you want.** <a href="https://reyniergc.github.io/memory_card/" target="_blank" title="More Details">Play Now!!!</a>
-[Link Text](https://reyniergc.github.io/memory_card/)
+[>Play Now!!!](https://reyniergc.github.io/memory_card/)
 
 **Main goal of the project memory card.**
 
