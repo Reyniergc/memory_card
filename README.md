@@ -1,5 +1,5 @@
 # memory_card
-Project realized during the **Udacity** Front-End Nano Degree.
+Project realized during the **Udacity Front-End Nano Degree.**
 
 **In this link you can play the game if you want.** [Play Now!!!](https://reyniergc.github.io/memory_card/)
 
